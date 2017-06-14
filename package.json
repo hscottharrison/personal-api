@@ -1,0 +1,23 @@
+{
+  "name": "personal-api",
+  "version": "1.0.0",
+  "description": "Personal API project for dev mountain",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hscottharrison/personal-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hscottharrison/personal-api/issues"
+  },
+  "homepage": "https://github.com/hscottharrison/personal-api#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3"
+  }
+}
