@@ -18,7 +18,11 @@ app.get('/family', mainCtrl.getFamily);
 app.get('/family/:gender', mainCtrl.getFamilyGender);
 app.get('/restaurants', mainCtrl.getRestaurants);
 app.get('/restaurants/:name', mainCtrl.getRestaurantName);
-
+app.put('/name', mainCtrl.changeName);
+app.put('/location', mainCtrl.changeLocation);
+app.post('/hobbies', mainCtrl.addHobby);
+app.post('/occupations/:occupation', mainCtrl.addOccupation);
+app.post('/family', mainCtrl.addFamily);
 
 
 

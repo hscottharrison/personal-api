@@ -7,6 +7,14 @@ module.exports = {
     return res.json(user.location);
   },
   getOccupations: function(req, res){
+    if(req.query.order){
+      if(req.query.order === 'asc'){
+        return res.json(user.occupations.reverse());
+      }
+      else if(req.query.order === 'desc'){
+        return res.json(user.occupations.sort())
+      }
+    }
     return res.json(user.occupations);
   },
   getLatestOccupation: function(req, res){
@@ -50,6 +58,7 @@ module.exports = {
       })
       return res.json(restaurant);
     }
+    if(req.query.order)
       return res.json(restaurants);
   },
   //start here you have not gotten this to work yet
@@ -61,7 +70,35 @@ module.exports = {
       return place.name == name;
     });
     return res.json(restaurant);
+  },
+  changeName: function(req, res){
+    var name = req.query.name;
+    user.name = name;
+    res.json('updated');
+  },
+  changeLocation: function(req, res){
+    var location = req.query.location;
+    user.location = location;
+    res.json('updated');
+  },
+  addHobby: function(req, res){
+    user.hobbies.push(req.query);
+    console.log(req.body)
+    res.json(user.hobbies);
+  },
+  addOccupation: function(req, res){
+    user.occupations.push(req.params.occupation);
+    res.json(user.occupations);
+  },
+  addFamily: function(req, res){
+    user.family.push(req.query);
+    res.json(user.family);
+  },
+  addRestaurant: function(req, res){
+    user.restaurants.push(req.query);
+    res.json(user.restaurants);
   }
+
 
 
 
