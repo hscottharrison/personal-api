@@ -1,4 +1,6 @@
 var user = require('../user.js');
+var skillz = require('../skillz.js');
+var secrets = require('./secrets.js');
 module.exports = {
   getName: function(req, res){
     return res.json(user.name);
@@ -58,8 +60,10 @@ module.exports = {
       })
       return res.json(restaurant);
     }
-    if(req.query.order)
+    if(req.query.order){
       return res.json(restaurants);
+    }
+    return res.json(user.resturants);
   },
   //start here you have not gotten this to work yet
   getRestaurantName: function(req, res){
@@ -82,22 +86,39 @@ module.exports = {
     res.json('updated');
   },
   addHobby: function(req, res){
-    user.hobbies.push(req.query);
-    console.log(req.body)
+    user.hobbies.push(req.body);
     res.json(user.hobbies);
   },
   addOccupation: function(req, res){
-    user.occupations.push(req.params.occupation);
+    user.occupations.push(req.body.name);
     res.json(user.occupations);
   },
   addFamily: function(req, res){
-    user.family.push(req.query);
-    res.json(user.family);
+    user.family.push(req.body);
+    res.json(user.family)
   },
   addRestaurant: function(req, res){
-    user.restaurants.push(req.query);
+    user.restaurants.push(req.body);
     res.json(user.restaurants);
+  },
+  getSkillz: function(req, res){
+    if(req.query.experience){
+      var levelSkill = skillz.filter(function(skill){
+        return skill.experience = req.query.experience;
+      })
+      return res.json(levelSkill);
+    }
+    return res.json(skillz)
+  },
+  postSkillz: function(req, res){
+    skillz.push(req.body);
+    return res.json(skillz)
+  },
+  getSecrets: function(req, res){
+    return res.json(secrets);
   }
+
+
 
 
 
